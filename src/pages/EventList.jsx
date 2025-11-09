@@ -10,7 +10,7 @@ const EventList = () => {
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [eventType, setEventType] = useState("All");
 
-  const eventFilter = () => {
+  const eventFilterType = () => {
     if (!data) return;
     const input = searchInput.toLowerCase();
     const filtered = data?.filter((event) => {
@@ -18,21 +18,26 @@ const EventList = () => {
       const tagsMatch = event.tags?.join(" ").toLowerCase().includes(input);
       const matchSearch = input === "" || titleMatch || tagsMatch;
       const eventFilter = eventType === "All" || event.eventType === eventType;
-      return matchSearch || eventFilter;
+      return matchSearch && eventFilter;
     });
     setFilteredEvents(filtered);
   };
+  console.log(data);
 
   useEffect(() => {
-    if (data) eventFilter();
-  }, [data, searchInput, eventType]);
+    if (data) eventFilterType();
+  }, [data, eventType]);
+
+  const handleSearch = () => {
+    eventFilterType(searchInput, eventType);
+  };
 
   return (
     <>
       <Header
         searchInput={searchInput}
         setSearchInput={setSearchInput}
-        handleSearch={eventFilter}
+        handleSearch={handleSearch}
       />
       <div className="container py-4">
         <div className="py-3 d-flex justify-content-end">
@@ -80,7 +85,7 @@ const EventList = () => {
               </div>
             ))
           ) : (
-            <p className="text-center">No matching events found.</p>
+            <p className="text-center">No events found.</p>
           )}
         </div>
       </div>
