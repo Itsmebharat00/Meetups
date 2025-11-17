@@ -48,7 +48,7 @@ const EventList = () => {
             onChange={(event) => setEventType(event.target.value)}
           >
             <option value="All"> Select event type </option>
-            <option value="All">Both </option>
+            <option value="All">All </option>
             <option value="Offline"> Offline </option>
             <option value="Online"> Online </option>
           </select>
