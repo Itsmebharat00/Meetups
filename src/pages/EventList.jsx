@@ -44,11 +44,11 @@ const EventList = () => {
           <select
             name="eventType"
             id="eventFilter"
-            className="border rounded px-2 py-1"
+            className="border rounded px-2 py-1  text-secondary"
             onChange={(event) => setEventType(event.target.value)}
           >
-            <option value="All">Select Event Type </option>
-            <option value="Hybrid"> Hybrid </option>
+            <option value="All"> Select event type </option>
+            <option value="All">Both </option>
             <option value="Offline"> Offline </option>
             <option value="Online"> Online </option>
           </select>
@@ -57,7 +57,7 @@ const EventList = () => {
         <div className="row">
           {filteredEvents?.length > 0 ? (
             filteredEvents.map((event) => (
-              <div className="col-md-3 mb-3" key={event._id}>
+              <div className="col-md-4 mb-4" key={event._id}>
                 <div className="" style={{ width: "18rem" }}>
                   <div className="position-relative">
                     <img
@@ -85,7 +85,7 @@ const EventList = () => {
               </div>
             ))
           ) : (
-            <p className="text-center">No events found.</p>
+            <p className="text-center container ">No events found.</p>
           )}
         </div>
       </div>

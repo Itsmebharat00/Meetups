@@ -11,14 +11,13 @@ const EventDetails = () => {
 
   console.log(data);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error loading event</p>;
-  if (!data) return <p>No event found.</p>;
+  if (loading) return <p className="container py-4">Loading...</p>;
+  if (error) return <p className="container py-4">Error loading event</p>;
+  if (!data) return <p className="container py-4">No event found.</p>;
 
   return (
     <>
       <Header />
-
       <div className="container py-4">
         <h3 className="fw-bold mb-1">{data.title}</h3>
         <p className="text-muted">
@@ -33,7 +32,6 @@ const EventDetails = () => {
               className="img-fluid rounded mb-4"
               style={{ width: "100%", maxHeight: "400px", objectFit: "cover" }}
             />
-
             <h5 className="fw-bold">Details:</h5>
             <p className="text-muted">{data.description}</p>
 
@@ -62,19 +60,28 @@ const EventDetails = () => {
                   {data.startTime} <br /> to {data.endTime}
                 </p>
                 <p className="mb-2">{data.location}</p>
-                <p className="mb-0">Cost: {data.price}</p>
+                <p className="mb-0">Cost: {data.price}Rs </p>
               </div>
             </div>
 
-            {data.speakers.length > 0 && (
+            {data.speakers?.length > 0 && (
               <div className="card mb-4 shadow-sm border-0">
                 <div className="card-body">
                   <h5 className="fw-bold mb-3">
                     Speakers: ({data.speakers.length})
                   </h5>
                   <div className="d-flex flex-wrap gap-2">
-                    {data.speakers.map((speaker) => (
+                    {data.speakers?.map((speaker) => (
                       <div className=" text-center">
+                        <img
+                          src={speaker.image}
+                          alt={speaker.name}
+                          style={{
+                            width: "70px",
+                            height: "70px",
+                            borderRadius: "50%",
+                          }}
+                        />
                         <p className="mb-0 fw-semibold"> {speaker} </p>
                       </div>
                     ))}
