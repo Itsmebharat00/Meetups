@@ -82,7 +82,7 @@ const EventDetails = () => {
                             borderRadius: "50%",
                           }}
                         />
-                        <p className="mb-0 fw-semibold"> {speaker} </p>
+                        <p className="mb-0 fw-semibold"> {speaker.name} </p>
                       </div>
                     ))}
                   </div>
