@@ -57,7 +57,10 @@ const EventList = () => {
         <div className="row">
           {filteredEvents?.length > 0 ? (
             filteredEvents.map((event) => (
-              <div className="col-md-4 mb-4" key={event._id}>
+              <div
+                className="col-md-4 mb-4 d-flex justify-content-center"
+                key={event._id}
+              >
                 <div className="" style={{ width: "18rem" }}>
                   <div className="position-relative">
                     <img
